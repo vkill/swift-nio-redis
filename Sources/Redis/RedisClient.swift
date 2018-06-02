@@ -357,7 +357,7 @@ open class RedisClient : RedisCommandTarget {
   }
   
   func _handleReply(_ value: RESPValue) { // Q: own
-    //Redis.print(error: nil, value: value)
+    //NIORedisClient.print(error: nil, value: value)
     
     if !pendingCalls.isEmpty {
       let call = pendingCalls.removeFirst()
@@ -390,7 +390,7 @@ open class RedisClient : RedisCommandTarget {
       }
     }
     
-    Redis.print(error: nil, value: value)
+    NIORedisClient.print(error: nil, value: value)
     assertionFailure("reply, but no pending calls?")
     return _closeOnUnexpectedError(Error.unexpectedInput)
   }
@@ -526,7 +526,7 @@ open class RedisClient : RedisCommandTarget {
     switch state {
       case .authenticating:
         // TODO: process auth result
-        Redis.print(error: nil, value: value)
+        NIORedisClient.print(error: nil, value: value)
         assertionFailure("not implemented: AUTH")
         return _closeOnUnexpectedError(Error.notImplemented)
 
@@ -534,7 +534,7 @@ open class RedisClient : RedisCommandTarget {
         _handleReply(value)
       
       default:
-        Redis.print(error: nil, value: value)
+        NIORedisClient.print(error: nil, value: value)
         assertionFailure("unexpected receive: \(state)")
         print("ERROR: unexpected receive:", value)
         // TODO: emit client error
@@ -549,7 +549,7 @@ open class RedisClient : RedisCommandTarget {
     state = .error(.channelError(error))
     
     print("RedisClient error:", error)
-    Redis.print(error: error, value: nil)
+    NIORedisClient.print(error: error, value: nil)
   }
   
   
