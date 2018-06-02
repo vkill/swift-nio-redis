@@ -13,7 +13,7 @@
 //===----------------------------------------------------------------------===//
 
 import NIO
-import NIORedis
+import NIORedisProtocolImplementation
 
 public final class RedisCommand : RESPEncodable {
   

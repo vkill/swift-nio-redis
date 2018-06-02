@@ -12,7 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import NIORedis
+import NIORedisProtocolImplementation
 
 public func print(error err: Error?, value: RESPValue?) {
   assert(err != nil || value != nil, "Neither error nor value in Redis result?")

@@ -353,8 +353,8 @@ public extension RedisCommandTarget { // Callback based
 // MARK: - Callback Helpers
 
 import class    NIO.EventLoopFuture
-import enum     NIORedis.RESPValue
-import protocol NIORedis.RESPEncodable
+import enum     NIORedisProtocolImplementation.RESPValue
+import protocol NIORedisProtocolImplementation.RESPEncodable
 
 fileprivate extension EventLoopFuture {
   

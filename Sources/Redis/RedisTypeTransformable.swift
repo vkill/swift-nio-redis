@@ -14,7 +14,7 @@
 
 import struct Foundation.Data
 import struct Foundation.TimeInterval
-import enum   NIORedis.RESPValue
+import enum   NIORedisProtocolImplementation.RESPValue
 
 protocol RedisTypeTransformable {
   
